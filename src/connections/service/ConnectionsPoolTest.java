@@ -35,7 +35,9 @@ ConnectionsPool pool;
 		for(int i = limit + 1; i < limit * 2; i++) {
 			pool.addConnection(new Connection(i, "bbbbb", 10));
 		}
-		assertNull(pool.getConnection(limit));
+		for (int i = 2; i <= limit; i++) {
+			assertNull(pool.getConnection(i));
+		}
 		assertNotNull(pool.getConnection(1));
 	}
 	
